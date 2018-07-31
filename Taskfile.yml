@@ -41,6 +41,16 @@ tasks:
     vars:
       EXHIBITOR_VERSION: "1.7.1"
       ZOOKEEPER_VERSION: "3.4.13"
+  marathon:
+    dir: marathon
+    cmds:
+      - echo "Building Marathon ..."
+      - docker build --compress --build-arg VERSION={{.MARATHON_VERSION}} --build-arg MESOS_IMAGE=andersnormal/mesos:{{.MESOS_VERSION}} -t andersnormal/marathon .
+      - docker tag andersnormal/marathon andersnormal/marathon:{{.MARATHON_VERSION}}
+      - docker push andersnormal/marathon:{{.MARATHON_VERSION}}
+    vars:
+      MARATHON_VERSION: "1.6.535"
+      MESOS_VERSION: "1.6.1"
   build:
     cmds:
       - task: mesos
