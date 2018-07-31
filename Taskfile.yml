@@ -15,7 +15,7 @@ tasks:
     dir: master
     cmds:
       - echo "Building Mesos Master ..."
-      - docker build --compress --build-arg MESOS_IMAGE=andersnormal/mesos --build-arg VERSION={{.VERSION}} -t andersnormal/mesos-master .
+      - docker build --compress --build-arg MESOS_IMAGE=andersnormal/mesos:{{.VERSION}} --build-arg VERSION={{.VERSION}} -t andersnormal/mesos-master .
       - docker tag andersnormal/mesos-master axelspringer/mesos-master:{{.VERSION}}
       - docker push andersnormal/mesos-master:{{.VERSION}}
     vars:
@@ -25,7 +25,7 @@ tasks:
     dir: agent
     cmds:
       - echo "Building Mesos Agent ..."
-      - docker build --compress --build-arg MESOS_IMAGE=andersnormal/mesos --build-arg VERSION={{.VERSION}} -t andersnormal/mesos-agent .
+      - docker build --compress --build-arg MESOS_IMAGE=andersnormal/mesos:{{.VERSION}} --build-arg VERSION={{.VERSION}} -t andersnormal/mesos-agent .
       - docker tag andersnormal/mesos-agent axelspringer/mesos-agent:{{.VERSION}}
       - docker push andersnormal/mesos-agent:{{.VERSION}}
     vars:
