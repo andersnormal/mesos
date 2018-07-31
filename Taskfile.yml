@@ -6,7 +6,7 @@ tasks:
     cmds:
       - echo "Building Mesos ..."
       - docker build --compress --build-arg VERSION={{.VERSION}} -t andersnormal/mesos .
-      - docker tag andersnormal/mesos axelspringer/mesos:{{.VERSION}}
+      - docker tag andersnormal/mesos andersnormal/mesos:{{.VERSION}}
       - docker push andersnormal/mesos:{{.VERSION}}
     vars:
       VERSION:
@@ -16,7 +16,7 @@ tasks:
     cmds:
       - echo "Building Mesos Master ..."
       - docker build --compress --build-arg MESOS_IMAGE=andersnormal/mesos:{{.VERSION}} --build-arg VERSION={{.VERSION}} -t andersnormal/mesos-master .
-      - docker tag andersnormal/mesos-master axelspringer/mesos-master:{{.VERSION}}
+      - docker tag andersnormal/mesos-master andersnormal/mesos-master:{{.VERSION}}
       - docker push andersnormal/mesos-master:{{.VERSION}}
     vars:
       VERSION:
@@ -26,7 +26,7 @@ tasks:
     cmds:
       - echo "Building Mesos Agent ..."
       - docker build --compress --build-arg MESOS_IMAGE=andersnormal/mesos:{{.VERSION}} --build-arg VERSION={{.VERSION}} -t andersnormal/mesos-agent .
-      - docker tag andersnormal/mesos-agent axelspringer/mesos-agent:{{.VERSION}}
+      - docker tag andersnormal/mesos-agent andersnormal/mesos-agent:{{.VERSION}}
       - docker push andersnormal/mesos-agent:{{.VERSION}}
     vars:
       VERSION:
@@ -36,7 +36,7 @@ tasks:
     cmds:
       - echo "Building Exhibitor ..."
       - docker build --compress --build-arg EXHIBITOR_VERSION={{.EXHIBITOR_VERSION}} --build-arg ZOOKEEPER_VERSION={{.ZOOKEEPER_VERSION}} -t andersnormal/exhibitor .
-      - docker tag andersnormal/exhibitor axelspringer/exhibitor:{{.VERSION}}
+      - docker tag andersnormal/exhibitor andersnormal/exhibitor:{{.VERSION}}
       - docker push andersnormal/exhibitor:{{.VERSION}}
     vars:
       EXHIBITOR_VERSION: "1.7.1"
