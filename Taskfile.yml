@@ -6,8 +6,8 @@ tasks:
     cmds:
       - echo "Building Mesos ..."
       - docker build --compress --build-arg VERSION={{.VERSION}} -t andersnormal/mesos .
-      - docker tag andersnormal/mesos axelspringer/mesos:${VERSION}
-      - docker push andersnormal/mesos:${VERSION}
+      - docker tag andersnormal/mesos axelspringer/mesos:{{.VERSION}}
+      - docker push andersnormal/mesos:{{.VERSION}}
     vars:
       VERSION:
         sh: git describe --exact-match --tags $(git log -n1 --pretty='%h')
@@ -16,8 +16,8 @@ tasks:
     cmds:
       - echo "Building Mesos Master ..."
       - docker build --compress --build-arg MESOS_IMAGE=andersnormal/mesos --build-arg VERSION={{.VERSION}} -t andersnormal/mesos-master .
-      - docker tag andersnormal/mesos-master axelspringer/mesos-master:${VERSION}
-      - docker push andersnormal/mesos-master:${VERSION}
+      - docker tag andersnormal/mesos-master axelspringer/mesos-master:{{.VERSION}}
+      - docker push andersnormal/mesos-master:{{.VERSION}}
     vars:
       VERSION:
         sh: git describe --exact-match --tags $(git log -n1 --pretty='%h')
@@ -26,8 +26,8 @@ tasks:
     cmds:
       - echo "Building Mesos Agent ..."
       - docker build --compress --build-arg MESOS_IMAGE=andersnormal/mesos --build-arg VERSION={{.VERSION}} -t andersnormal/mesos-agent .
-      - docker tag andersnormal/mesos-agent axelspringer/mesos-agent:${VERSION}
-      - docker push andersnormal/mesos-agent:${VERSION}
+      - docker tag andersnormal/mesos-agent axelspringer/mesos-agent:{{.VERSION}}
+      - docker push andersnormal/mesos-agent:{{.VERSION}}
     vars:
       VERSION:
         sh: git describe --exact-match --tags $(git log -n1 --pretty='%h')
@@ -36,8 +36,8 @@ tasks:
     cmds:
       - echo "Building Exhibitor ..."
       - docker build --compress --build-arg EXHIBITOR_VERSION={{.EXHIBITOR_VERSION}} --build-arg ZOOKEEPER_VERSION={{.ZOOKEEPER_VERSION}} -t andersnormal/exhibitor .
-      - docker tag andersnormal/exhibitor axelspringer/exhibitor:${VERSION}
-      - docker push andersnormal/exhibitor:${VERSION}
+      - docker tag andersnormal/exhibitor axelspringer/exhibitor:{{.VERSION}}
+      - docker push andersnormal/exhibitor:{{.VERSION}}
     vars:
       EXHIBITOR_VERSION: "1.7.1"
       ZOOKEEPER_VERSION: "3.4.13"
