@@ -57,3 +57,4 @@ tasks:
       - task: master
       - task: agent
       - task: exhibitor
+      - task: marathon
