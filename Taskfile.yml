@@ -37,7 +37,7 @@ tasks:
       - echo "Building Exhibitor ..."
       - docker build --compress --build-arg EXHIBITOR_VERSION={{.EXHIBITOR_VERSION}} --build-arg ZOOKEEPER_VERSION={{.ZOOKEEPER_VERSION}} -t andersnormal/exhibitor .
       - docker tag andersnormal/exhibitor andersnormal/exhibitor:{{.VERSION}}
-      - docker push andersnormal/exhibitor:{{.VERSION}}
+      - docker push andersnormal/exhibitor:{{.EXHIBITOR_VERSION}}
     vars:
       EXHIBITOR_VERSION: "1.7.1"
       ZOOKEEPER_VERSION: "3.4.13"
